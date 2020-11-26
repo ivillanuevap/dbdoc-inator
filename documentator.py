@@ -1,8 +1,8 @@
 #!/usr/bin/python
 import sys, getopt
-from dbengine import Dbengine
 from proyeccion import Proyeccion
 from diccionario import Diccionario
+from src.Database.Connection import Connection_db
 
 def main(argv):
     #print("Inicia generacion de documentacion de base de datos MySQL")
@@ -40,7 +40,7 @@ def main(argv):
                 input_enable = 1
 
 
-    dbEngine = Dbengine(db_engine, host, user, password, database)
+    dbEngine = Connection_db(db_engine, host, user, password, database)
 
     json = {
         'schema': dbEngine.schema,
@@ -61,6 +61,8 @@ def main(argv):
         table_size = dbEngine.getSizeTable(table)  # TODO - check this value
         rows_count = dbEngine.getTotalRows(table)
         row_size = 0
+        print(table_size)
+        print(rows_count)
         if (rows_count > 0):
             row_size = table_size / rows_count
         description_table = dbEngine.getDescripcionTable(table)
@@ -139,5 +141,8 @@ def main(argv):
         json['tables'].append(table_json)
     Diccionario(json)
     Proyeccion(json, input_enable)
+
+
+
 if __name__ == "__main__":
     main(sys.argv[1:])
