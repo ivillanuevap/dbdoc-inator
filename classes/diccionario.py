@@ -4,7 +4,7 @@ from console_progressbar import ProgressBar
 
 class Diccionario:
     src_template = "template/diccionario.docx"
-    output = "output/DGTIC_{schema}_Form_DiccDatos_v1.0.docx"
+    output = "output/{schema}_diccionario.docx"
 
     def chispaAll(self, search, replace, string):
         while (string.find(search) > 0):

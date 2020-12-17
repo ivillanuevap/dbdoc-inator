@@ -1,11 +1,11 @@
 # DBDoc-inator(Database documentation generator)
 
-##Supported Databases(tested)
+## Supported Databases(tested)
 * MySQL
 * Oracle
 * MSSQL
 
-##Supported Databases(NO tested)
+## Supported Databases(NO tested)
 _SQLAlchemy supported databases_
 * SQLite
 * Postgresql 
@@ -13,7 +13,7 @@ _SQLAlchemy supported databases_
 * Sybase
 * Others, most of which support multiple DBAPIs
 
-##Generated documents
+## Generated documents
 _This project generates docx files_
 * Data Dictionary
 * Database growth projection
@@ -22,7 +22,7 @@ _TODO_
 * ERM Diagram
 * Schema build script
 
-##Requirements
+## Requirements
 _It is required to have Python3 installed as well as the packages:_
 * setuptools
 * wheel
@@ -46,22 +46,19 @@ pip install console-progressbar
 pip install pymssql
 ```
 
-##How to generate documentation?
+## How to generate documentation?
 _To generate the documentation in a terminal execute_
 ```
 python dbdoc.py
 ```
-###Parameters
+### Parameters
 _Modify the dbdoc.py file to connect to your database_
 
 
-##How to customize the templates?
+## How to customize the templates?
 _Go to the **./template/** folder and edit the files_
 * diccionario.docx
 * proyeccion.docx
-
-
-
 
 _The generator will take the format and add the corresponding information. The generated files will be stored in **./output**_
 

@@ -4,7 +4,7 @@ from documento import Documento
 class Proyeccion:
 
     src_template = "template/proyeccion.docx"
-    output = "output/DGTIC_{schema}_Form_ProyBD_v1.0.docx"
+    output = "output/{schema}proyeccion.docx"
 
     def __init__(self, json, input_enable):
         documento = Documento(self.src_template)
