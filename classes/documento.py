@@ -15,9 +15,9 @@ class Documento:
             self.document = Document(src_template)
         else:
             self.document = Document()
-        style = self.document.styles['Normal']
+        style = self.document.styles["Normal"]
         font = style.font
-        font.name = 'Calibri'
+        font.name = "Calibri"
         font.size = Pt(9)
 
     def make_rows_bold(self, cells):
@@ -41,21 +41,21 @@ class Documento:
                 tr = doc_table.rows[row].cells
             except:
                 tr = doc_table.add_row().cells
-            if tr_json['style'] == 'bold':
+            if tr_json["style"] == "bold":
                 self.cellStyle(tr, "#D9D9D9")
-            for t in tr_json['text']:
-                tr[t].text = tr_json['text'][t]
+            for t in tr_json["text"]:
+                tr[t].text = tr_json["text"][t]
     def mergeCells(self, doc_table, json):
         for merge in json:
-            a = doc_table.cell(merge['a'][0], merge['a'][1])
-            b = doc_table.cell(merge['b'][0], merge['b'][1])
+            a = doc_table.cell(merge["a"][0], merge["a"][1])
+            b = doc_table.cell(merge["b"][0], merge["b"][1])
             a.merge(b)
     def createTable(self, json):
-        doc_table = self.document.add_table(json['rows'], json['cols'])
-        self.buildTableSection(doc_table, json['thead'])
-        self.buildTableSection(doc_table, json['tbody'])
-        if 'merge' in json:
-            self.mergeCells(doc_table, json['merge'])
+        doc_table = self.document.add_table(json["rows"], json["cols"])
+        self.buildTableSection(doc_table, json["thead"])
+        self.buildTableSection(doc_table, json["tbody"])
+        if "merge" in json:
+            self.mergeCells(doc_table, json["merge"])
     def createHeading(self, text):
         self.document.add_heading(text, level=1)
 
@@ -72,19 +72,19 @@ class Documento:
             while bytes > 1024:
                 bytes = bytes / 1024
                 level += 1
-        if str(bytes).find('.') > 0:
+        if str(bytes).find(".") > 0:
             bytes = "{:.2f}".format(bytes)
-        elif str(bytes) == 'None':
+        elif str(bytes) == "None":
             bytes = 0
-        return str(bytes) + ' ' + self.getBytesMesure(level)
+        return str(bytes) + " " + self.getBytesMesure(level)
 
     def getBytesMesure(self, level):
         if level == 0:
-            return 'Bytes'
+            return "Bytes"
         elif level == 1:
-            return 'KB'
+            return "KB"
         elif level == 2:
-            return 'MB'
+            return "MB"
         elif level == 3:
-            return 'GB'
-        return ''
+            return "GB"
+        return ""
